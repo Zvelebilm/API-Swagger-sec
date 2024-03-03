@@ -19,7 +19,7 @@ public class ApiSwaggerSecDemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        movieRepositor.save(new Movie("The Godfather"));
+//        movieRepositor.save(new Movie("The Godfather"));
 
     }
 }
