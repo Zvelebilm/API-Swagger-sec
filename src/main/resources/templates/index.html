@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/movie/find/{title}}" name="" method="GET">
+    <label>
+        <input name="findMovie" th:value="${title}"/>
+    </label>
+    <button type="submit">Find</button>
+</form>
+
+</body>
+</html>
