@@ -15,7 +15,7 @@ public class RestController {
     public RestController(MovieRepositor movieRepository) {
         this.movieRepository = movieRepository;
     }
-    @GetMapping("/api/events")
+    @GetMapping("/api/movies")
     public ResponseEntity<?> getEvents() {
         List<Movie> movies = movieRepository.findAll();
         return ResponseEntity.ok(movies);
