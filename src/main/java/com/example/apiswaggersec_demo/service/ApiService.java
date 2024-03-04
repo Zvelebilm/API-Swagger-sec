@@ -1,5 +1,7 @@
 package com.example.apiswaggersec_demo.service;
 
+import com.example.apiswaggersec_demo.DTO.ResponseMovieDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 
@@ -23,14 +25,24 @@ public class ApiService {
         RestTemplate restTemplate = new RestTemplate();
         String apiKey = new TheMovieDB().getApiKey();
         HttpHeaders headers = new HttpHeaders();
+        ObjectMapper objectMapper = new ObjectMapper();
+
         String url = ("https://api.themoviedb.org/3/search/movie?query=" + title + "&include_adult=false&language=en-US&page=1");
 
 
         headers.setBearerAuth(apiKey);
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        Object response = restTemplate.exchange(url,HttpMethod.GET, new HttpEntity<>(headers), String.class);
-        System.out.println(response);
+        String responseJSON = restTemplate.exchange(url,HttpMethod.GET, new HttpEntity<>(headers), String.class).getBody();
+       try {
+           ResponseMovieDTO responseMovieDTO = objectMapper.readValue(responseJSON, ResponseMovieDTO.class);
+           System.out.println(responseMovieDTO);
+
+       } catch (Exception e) {
+           log.error(e.getMessage());
+       }
+
+       System.out.println(responseJSON);
 
 
     }
