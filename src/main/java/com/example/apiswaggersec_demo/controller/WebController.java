@@ -26,7 +26,7 @@ public class WebController {
     @PostMapping("/find")
     public String movie(String title) {
         log.warn("title" + title);
-       // apiService.findMovie(title);
+       apiService.findMovie(title);
 
         //todo try find movie localy ,if not try find movie from api
         return "redirect:/";

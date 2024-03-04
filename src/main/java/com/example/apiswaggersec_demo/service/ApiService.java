@@ -17,22 +17,20 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 public class ApiService {
+    //curl --request GET --url 'https://api.themoviedb.org/3/search/movie?query=Matrix&include_adult=false&language=en-US&page=1' \
 
-    public void findMovie(String title){
-        final RestTemplate restTemplate = null;
+    public void findMovie(String title) {
+        RestTemplate restTemplate = new RestTemplate();
         String apiKey = new TheMovieDB().getApiKey();
         HttpHeaders headers = new HttpHeaders();
+        String url = ("https://api.themoviedb.org/3/search/movie?query=" + title + "&include_adult=false&language=en-US&page=1");
+
+
         headers.setBearerAuth(apiKey);
         headers.setContentType(MediaType.APPLICATION_JSON);
-        //curl --request GET --url 'https://api.themoviedb.org/3/search/movie?query=Matrix&include_adult=false&language=en-US&page=1' \
 
-
-        try { URI uri = new URI("https://api.themoviedb.org/3/search/movie?query=" + title + "&include_adult=false&language=en-US&page=1");
-            RequestEntity<Void> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, uri);
-            ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
-        } catch (Exception e) {
-            log.warn("error" + e);
-        }
+        Object response = restTemplate.exchange(url,HttpMethod.GET, new HttpEntity<>(headers), String.class);
+        System.out.println(response);
 
 
     }
