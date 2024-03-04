@@ -1,7 +1,7 @@
 package com.example.apiswaggersec_demo.controller;
 
 import com.example.apiswaggersec_demo.model.Movie;
-import com.example.apiswaggersec_demo.repository.MovieRepositor;
+import com.example.apiswaggersec_demo.repository.MovieRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
-    final private MovieRepositor movieRepository;
+    final private MovieRepository movieRepository;
 
-    public RestController(MovieRepositor movieRepository) {
+    public RestController(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
     @GetMapping("/api/movies")
