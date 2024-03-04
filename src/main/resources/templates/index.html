@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/movie/find/{title}}" name="" method="GET">
-    <label>
-        <input name="findMovie" th:value="${title}"/>
-    </label>
-    <button type="submit">Find</button>
-</form>
+<div>
+    <form method="POST" action="/find">
+        <div><h3>Find movie</h3>
+            <input type="text" name="title" placeholder="title"/>
+        </div>
+        <input type="submit">
+    </form>
+</div>
 
 </body>
 </html>
