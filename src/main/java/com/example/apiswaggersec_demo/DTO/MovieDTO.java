@@ -1,13 +1,18 @@
 package com.example.apiswaggersec_demo.DTO;
 
+import com.example.apiswaggersec_demo.model.Movie;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovieDTO {
+@Getter
+@Setter
+public class MovieDTO  {
         @JsonProperty("adult")
         public boolean adult;
         @JsonProperty("backdrop_path")

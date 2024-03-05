@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 public class ApiService {
     //curl --request GET --url 'https://api.themoviedb.org/3/search/movie?query=Matrix&include_adult=false&language=en-US&page=1' \
-
+    private final RepoService repoService;
     public void findMovie(String title) {
         RestTemplate restTemplate = new RestTemplate();
         String apiKey = new TheMovieDB().getApiKey();
@@ -36,7 +36,7 @@ public class ApiService {
         String responseJSON = restTemplate.exchange(url,HttpMethod.GET, new HttpEntity<>(headers), String.class).getBody();
        try {
            ResponseMovieDTO responseMovieDTO = objectMapper.readValue(responseJSON, ResponseMovieDTO.class);
-           System.out.println(responseMovieDTO);
+           repoService.saveMovie(responseMovieDTO);
 
        } catch (Exception e) {
            log.error(e.getMessage());
