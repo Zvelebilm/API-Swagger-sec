@@ -52,7 +52,6 @@ public class RepoService {
             Integer voteCount) {
 
         Query query = new Query();
-        List<Movie> movies = new ArrayList<>();
 
         if (adult != null) {
             query.addCriteria(Criteria.where("adult").is(adult));
@@ -110,7 +109,7 @@ public class RepoService {
             query.addCriteria(Criteria.where("vote_count").is(voteCount));
         }
 
-        return movies = mongoTemplate.find(query, Movie.class);
+        return mongoTemplate.find(query, Movie.class);
 
     }
 
