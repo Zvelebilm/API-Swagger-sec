@@ -1,6 +1,9 @@
 package com.example.apiswaggersec_demo.model;
 
 import com.example.apiswaggersec_demo.DTO.MovieDTO;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +32,10 @@ public class Movie {
     public String release_date;
     public String title;
     public boolean video;
+    @DecimalMin(value="0.0", message = "vote_average should not be less than 0")
+    @DecimalMax(value="10.0", message = "vote_average should not be greater than 10")
     public double vote_average;
+    @Min(value = 0, message = "vote_count should not be less than 0")
     public int vote_count;
 
     public Movie(MovieDTO movieDTO) {
