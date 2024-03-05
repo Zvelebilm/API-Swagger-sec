@@ -14,9 +14,9 @@ public interface MovieRepository extends MongoRepository<Movie, Integer> {
     @Query("findByTitle")
     List<Movie> findByTitle(String title);
 
-    @Query("findByVote_averageGreaterThan")
+    @Query("{'vote_average': {$gt: ?0}}")
     List<Movie> findByVote_averageGreaterThan(Double vote_average);
-    @Query("findByVote_averageLessThan")
+    @Query("{'vote_average': {$lt: ?0}}")
     List<Movie> findByVote_averageLessThan(Double vote_average);
 
 }

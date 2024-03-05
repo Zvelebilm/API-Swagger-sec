@@ -38,11 +38,4 @@ public class RestController {
         return ResponseEntity.ok(movies);
     }
 
-
-
-//    @GetMapping("/api/movies/") //todo -fixme
-//    public ResponseEntity<?> getEventById(Double vote_average) {
-//
-//        return ResponseEntity.ok(repoService.findMoviesWIthRateGreater(vote_average));
-//    }
 }
