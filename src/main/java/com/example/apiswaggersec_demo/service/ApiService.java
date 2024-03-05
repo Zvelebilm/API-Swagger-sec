@@ -1,19 +1,16 @@
 package com.example.apiswaggersec_demo.service;
 
 import com.example.apiswaggersec_demo.DTO.ResponseMovieDTO;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.*;
-
 import com.example.apiswaggersec_demo.apiKey.TheMovieDB;
-import com.example.apiswaggersec_demo.model.Movie;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
 
 @Service
 @AllArgsConstructor

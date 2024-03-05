@@ -31,7 +31,7 @@ public class RepoService {
         }
     }
 
-    public List<Movie> custumQuery() {
+    public List<Movie> multipleQuery() { //todo
 
 
         return null;
