@@ -17,17 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 @Document
 public class Movie {
-@Field("adultboolean")
     public boolean adult;
-@Field("backdroppath")
     public String backdrop_path;
-@Field("genreids")
     public List<Integer> genre_ids;
-@Field("idmovie")
+    @Field("idmovie")
     public int id;
-@Field("originallanguage")
     public String original_language;
-@Field("originaltitle")
     public String original_title;
     public String overview;
     public double popularity;

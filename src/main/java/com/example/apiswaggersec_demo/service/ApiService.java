@@ -41,9 +41,5 @@ public class ApiService {
        } catch (Exception e) {
            log.error(e.getMessage());
        }
-
-       System.out.println(responseJSON);
-
-
     }
 }

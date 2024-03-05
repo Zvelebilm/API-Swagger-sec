@@ -31,9 +31,11 @@ public class RepoService {
         }
     }
 
-//    public List<Movie> findMoviesWIthRateGreater(Double rate) { //todo
-//        return movieRepository.findByVote_averageGreaterThan(rate);
-//    }
+    public List<Movie> custumQuery() {
+
+
+        return null;
+    }
 
 
 }
