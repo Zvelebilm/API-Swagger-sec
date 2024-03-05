@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
-@Tag(name = "Movies", description = "Movies API")
-public class RestController {
+@Tag(name = "Movies", description = "Get API")
+public class RestGetController {
     final private MovieRepository movieRepository;
     final private RepoService repoService;
 
-    public RestController(MovieRepository movieRepository, RepoService repoService) {
+    public RestGetController(MovieRepository movieRepository, RepoService repoService) {
         this.movieRepository = movieRepository;
         this.repoService = repoService;
     }
