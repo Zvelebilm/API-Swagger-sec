@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,6 +52,7 @@ public class RepoService {
             Integer voteCount) {
 
         Query query = new Query();
+        List<Movie> movies = new ArrayList<>();
 
         if (adult != null) {
             query.addCriteria(Criteria.where("adult").is(adult));
@@ -108,7 +110,7 @@ public class RepoService {
             query.addCriteria(Criteria.where("vote_count").is(voteCount));
         }
 
-        return mongoTemplate.find(query, Movie.class);
+        return movies = mongoTemplate.find(query, Movie.class);
 
     }
 
