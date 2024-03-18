@@ -1,13 +1,10 @@
 package com.example.apiswaggersec_demo;
 
-import com.example.apiswaggersec_demo.model.Movie;
 import com.example.apiswaggersec_demo.repository.MovieRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.List;
 
 @SpringBootApplication
 @AllArgsConstructor

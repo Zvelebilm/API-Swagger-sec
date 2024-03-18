@@ -50,7 +50,7 @@ public class RestGetController {
     )
     @GetMapping("/api/v1/movies/{title}")
     public ResponseEntity<?> getMoviesByTitle(@PathVariable(value = "title") String title) {
-        List<Movie> movies = movieRepository.findByTitle(title);
+        List<Movie> movies = movieRepository.findByOriginal_title(title);
         return ResponseEntity.ok(movies);
     }
 
