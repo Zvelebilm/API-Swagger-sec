@@ -4,7 +4,10 @@ import com.example.apiswaggersec_demo.model.Movie;
 import com.example.apiswaggersec_demo.repository.MovieRepository;
 import com.example.apiswaggersec_demo.service.RepoService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +18,17 @@ import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
 @Tag(name = "Movies", description = "Get API")
-public class RestGetController {
+@SecurityScheme(
+        name = "Bearer Authentication",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        scheme = "bearer"
+)
+public class GetMovieController {
     final private MovieRepository movieRepository;
     final private RepoService repoService;
 
-    public RestGetController(MovieRepository movieRepository, RepoService repoService) {
+    public GetMovieController(MovieRepository movieRepository, RepoService repoService) {
         this.movieRepository = movieRepository;
         this.repoService = repoService;
     }
@@ -33,6 +42,7 @@ public class RestGetController {
                     )
             }
     )
+    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/api/v1/movies")
     public ResponseEntity<?> getMovies() {
         List<Movie> movies = movieRepository.findAll();
@@ -48,6 +58,7 @@ public class RestGetController {
                     )
             }
     )
+    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/api/v1/movies/{title}")
     public ResponseEntity<?> getMoviesByTitle(@PathVariable(value = "title") String title) {
         List<Movie> movies = movieRepository.findByOriginal_title(title);
@@ -63,6 +74,7 @@ public class RestGetController {
                     )
             }
     )
+    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/api/v1/moviesByRateGreater/{vote_average}")
     public ResponseEntity<?> getMoviesByRateGreater(@PathVariable(value = "vote_average") Double vote_average) {
         List<Movie> movies = movieRepository.findByVote_averageGreaterThan(vote_average);
@@ -78,6 +90,7 @@ public class RestGetController {
                     )
             }
     )
+    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/api/v1/moviesByRateLess/{vote_average}")
     public ResponseEntity<?> getMoviesByRateLess(@PathVariable(value = "vote_average") Double vote_average) {
         List<Movie> movies = movieRepository.findByVote_averageLessThan(vote_average);
@@ -92,6 +105,7 @@ public class RestGetController {
                     )
             }
     )
+    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/api/v1/findMoviesByCriteria")
     public List<Movie> findMoviesByCriteria(
             @RequestParam(required = false) Boolean adult,

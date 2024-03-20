@@ -3,7 +3,10 @@ package com.example.apiswaggersec_demo.controller;
 import com.example.apiswaggersec_demo.model.Movie;
 import com.example.apiswaggersec_demo.repository.MovieRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +17,14 @@ import java.util.List;
 
 @RestController
 @Tag(name = "Movies", description = "Post API")
-public class RestPostController {
-    public RestPostController(MovieRepository movieRepository) {
+@SecurityScheme(
+        name = "Bearer Authentication",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        scheme = "bearer"
+)
+public class PostMovieController {
+    public PostMovieController(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 
@@ -29,6 +38,7 @@ public class RestPostController {
                     )
             }
     )
+    @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/api/v1/movie")
     public ResponseEntity<?> addMovie(@RequestBody Movie movie) {
         movieRepository.save(movie);
@@ -43,6 +53,7 @@ public class RestPostController {
                     )
             }
     )
+    @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/api/v1/movies")
     public ResponseEntity<?> addMovies(@RequestBody List<Movie> movies) {
         movieRepository.saveAll(movies);
