@@ -1,11 +1,14 @@
 package com.example.apiswaggersec_demo;
 
 import com.example.apiswaggersec_demo.repository.MovieRepository;
+import com.example.apiswaggersec_demo.securityConfig.RsaKeyProperties;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
+@EnableConfigurationProperties(RsaKeyProperties.class)
 @SpringBootApplication
 @AllArgsConstructor
 public class ApiSwaggerSecDemoApplication implements CommandLineRunner {
